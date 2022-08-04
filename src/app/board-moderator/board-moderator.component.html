@@ -1,0 +1,36 @@
+<div class="container">
+  <header class="jumbotron">
+    <p>{{ content }}</p>
+  </header>
+  <div *ngIf="show">
+  <div class="table-responsive-md">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="row">#</th>
+       <th scope="col" *ngIf="isadmin">username</th>
+        <th scope="col">offername</th>
+        <th scope="col">region</th>
+        <th scope="col">nbrunit</th>
+        <th scope="col">date</th>
+        <th scope="col">status</th>
+        <th scope="col" *ngIf="isadmin">valider</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let commande of commandes ; index as i">
+        <td>{{i+1}}</td>
+       <!-- <td> {{ commande.id }}</td>-->
+        <td *ngIf="isadmin"> {{ commande.username }}</td>
+        <td>{{ commande.offername }}</td>
+        <td>{{ commande.region }}</td>
+        <td>{{ commande.nbrunit }}</td> 
+        <td>{{ commande.date| date: 'dd-MM-yyyy'}}</td> 
+        <td >{{ commande.status }}</td>
+        <td *ngIf="isadmin"><button type="button" class="btn btn-outline-primary btn-rounded">Info</button></td>
+      </tr>
+      </tbody>
+      </table>
+    </div>
+</div>
+</div>

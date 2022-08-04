@@ -1,0 +1,41 @@
+<div *ngIf="show">
+<div class="container">
+  <header class="jumbotron">
+    <p>{{ content }}</p>
+  </header>
+</div>
+<form>
+      <div class="form-group">
+           <div class="form-row">
+          <label class="col-md-3" for="nom">service</label> 
+          <div class="col-md-9">
+              <input id="nom" type="text" class="form-control" name="" placeholder=" service name ">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <label class="col-md-3" for="mail">nombre d'arbres</label> 
+          <div class="col-md-9">
+               <input id="mail" type="text" class="form-control" name="" placeholder="nombre d'arbres">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <label class="col-md-3" for="mail">region</label> 
+          <div class="col-md-9">
+               <input id="mail" type="text" class="form-control" name="" placeholder="selectionner votre emplacement">
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-1 offset-md-11">
+                 <button class="btn btn-warning">Envoyer</button>
+            </div>
+        </div>
+      </div>
+    </form>
+    </div>
