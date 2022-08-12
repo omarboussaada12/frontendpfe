@@ -6,13 +6,12 @@
 </div>
 <form>
       <div class="form-group">
-           <div class="form-row">
-          <label class="col-md-3" for="nom">service</label> 
-          <div class="col-md-9">
-              <input id="nom" type="text" class="form-control" name="" placeholder=" service name ">
-          </div>
-        </div>
-      </div>
+        <label  for="offername" >selectionner un offer</label>
+      <select class="form-select" aria-label="Default select example" id="offername">
+        <option selected>offer choice</option>
+        <option *ngFor="let offer of offers " value="offer.name">{{offer.name}}</option>
+      </select>
+    </div>
       <div class="form-group">
         <div class="row">
           <label class="col-md-3" for="mail">nombre d'arbres</label> 
@@ -33,7 +32,7 @@
       <div class="form-group">
         <div class="row">
           <div class="col-md-1 offset-md-11">
-                 <button class="btn btn-warning">Envoyer</button>
+                 <button class="btn btn-warning">add</button>
             </div>
         </div>
       </div>

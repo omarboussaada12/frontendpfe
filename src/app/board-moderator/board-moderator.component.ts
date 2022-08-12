@@ -4,7 +4,6 @@ import { TokenStorageService } from '../_services/token-storage.service';
 import { CommandeService } from '../_services/commande.service';
 import { Commande } from '../_model/Commande';
 import { Router } from '@angular/router';
-import { isEmpty } from 'rxjs/internal/operators/isEmpty';
 
 @Component({
   selector: 'app-board-moderator',

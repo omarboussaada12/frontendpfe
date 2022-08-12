@@ -14,7 +14,7 @@
         <th scope="col">nbrunit</th>
         <th scope="col">date</th>
         <th scope="col">status</th>
-        <th scope="col" *ngIf="isadmin">valider</th>
+        <th scope="col" *ngIf="isadmin">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -27,7 +27,16 @@
         <td>{{ commande.nbrunit }}</td> 
         <td>{{ commande.date| date: 'dd-MM-yyyy'}}</td> 
         <td >{{ commande.status }}</td>
-        <td *ngIf="isadmin"><button type="button" class="btn btn-outline-primary btn-rounded">Info</button></td>
+        <td *ngIf="isadmin">
+  
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Action</button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Edit</a></li>
+            <li><a class="dropdown-item" href="#">Update</a></li>
+            <li><a class="dropdown-item" href="#">Delete</a></li>
+            <li><a class="dropdown-item" href="#">Confirmer</a></li>
+          </ul>
+        </td>
       </tr>
       </tbody>
       </table>

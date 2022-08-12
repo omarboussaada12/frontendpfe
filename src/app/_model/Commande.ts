@@ -1,5 +1,5 @@
 export class Commande {
-    id?: string;
+    id?: number;
     offername?: string;
     username?: string;
     region?: string;

@@ -1,15 +1,14 @@
-import { Injectable } from '@angular/core';
-import { retry, catchError } from 'rxjs/operators';
-import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, throwError } from 'rxjs';
+import { retry, catchError } from 'rxjs/operators';
 import { Commande } from '../_model/Commande';
-
+import { Offer } from '../_model/Offer';
 
 @Injectable({
   providedIn: 'root'
 })
-
-export class CommandeService {
+export class OfferService {
 
   endpoint = 'http://localhost:8080';
   constructor(private httpClient: HttpClient) {}
@@ -18,43 +17,43 @@ export class CommandeService {
       'Content-Type': 'application/json',
     }),
   };
-  getCommandesadmin(): Observable<Commande> {
+  getOffers(): Observable<Offer> {
     return this.httpClient
-      .get<Commande>(this.endpoint + '/get-all-commandes/')
+      .get<Offer>(this.endpoint + '/get-all-offer')
       .pipe(retry(1), catchError(this.processError));
   }
-  getCommandesuser(username:any): Observable<Commande> {
+  getOffersname(): Observable<Offer["name"]> {
     return this.httpClient
-      .get<Commande>(this.endpoint + '/get-all-commandesbyuser/'+username)
+      .get<string>(this.endpoint + '/get-all-offer-names')
       .pipe(retry(1), catchError(this.processError));
   }
-  getSingleCommande(id: any): Observable<Commande> {
+  getSingleOffer(id: any): Observable<Offer> {
     return this.httpClient
-      .get<Commande>(this.endpoint + '/users/' + id)
+      .get<Offer>(this.endpoint + '/get-Offer/' + id)
       .pipe(retry(1), catchError(this.processError));
   }
-  addCommande(data: any): Observable<Commande> {
+  addOffer(data: any): Observable<Offer> {
     return this.httpClient
-      .post<Commande>(
-        this.endpoint + '/users',
+      .post<Offer>(
+        this.endpoint + '/add-Offer',
         JSON.stringify(data),
         this.httpHeader
       )
       .pipe(retry(1), catchError(this.processError));
   }
   /*change function in the backend*/
-  updateCommande(id: any, data: any): Observable<Commande> {
+  updateOffer(id: any, data: any): Observable<Offer> {
     return this.httpClient
-      .put<Commande>(
-        this.endpoint + '/users/' + id,
+      .put<Offer>(
+        this.endpoint + '/update-offer' + id,
         JSON.stringify(data),
         this.httpHeader
       )
       .pipe(retry(1), catchError(this.processError));
   }
-  deleteCommande(id: any) {
+  deleteOffer(id: any) {
     return this.httpClient
-      .delete<Commande>(this.endpoint + '/users/' + id, this.httpHeader)
+      .delete<Offer>(this.endpoint + '/delete-Offer/' + id, this.httpHeader)
       .pipe(retry(1), catchError(this.processError));
   }
   processError(err: any) {
@@ -70,4 +69,3 @@ export class CommandeService {
     });
   }
 }
-

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Commande } from '../_model/Commande';
+import { Offer } from '../_model/Offer';
+import { CommandeService } from '../_services/commande.service';
+import { OfferService } from '../_services/offer.service';
 import { UserService } from '../_services/user.service';
 
 @Component({
@@ -10,8 +14,11 @@ import { UserService } from '../_services/user.service';
 export class BoardUserComponent implements OnInit {
   content?: string;
   show:boolean=false;
+  offers? :any = [Offer];
 
   constructor(private userService: UserService,
+    private offerService: OfferService,
+    private commandeService: CommandeService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -19,6 +26,7 @@ export class BoardUserComponent implements OnInit {
       data => {
         this.content = data;
         this.show=true;
+        this.fetchlistoffername();
       },
       err => {
         this.content = JSON.parse(err.error).message;
@@ -27,5 +35,15 @@ export class BoardUserComponent implements OnInit {
         
       }
     );
+  }
+  fetchlistoffername() {
+    return this.offerService.getOffers().subscribe((res: {}) => {
+      this.offers = res;
+    });
+  }
+  addCommande() {
+    return this.commandeService.addCommande(Commande).subscribe((res: {}) => {
+      this.offers = res;
+    });
   }
 }
